@@ -21,3 +21,5 @@ ggplot(data=data_science_profile, aes(x=criteria, y=score)) +
   geom_bar(stat="identity")
 ```
 
+![Profile](profile.png)
+
