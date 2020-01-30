@@ -48,6 +48,7 @@ d_mean_central_class = ddply(d, .(year), summarize, mean=mean(count))
 
 #### Compare statistics
 d_compare_stat <- data.frame(year=levels(factor(d$year)),
+                             not_missing = d_mean_ply$mean,
                               ignore=d_mean_ignore$mean,
                               replace=d_mean_replace$mean,
                               central=d_mean_central$mean,

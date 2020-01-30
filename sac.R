@@ -2,7 +2,7 @@ set.seed(1)
 d <- data.frame(year = rep(2000:2002, each = 3),
                 count = round(runif(9, 0, 20)))
 
-## Get min, mean and max of year counts
+## Get mean count of each unique year
 ### Using loop
 #### Get size of observation
 n <- nrow(d)
@@ -23,10 +23,14 @@ for(j in 1:length(y_level)) {
   }
   store[[j]] <- store_value
 }
+
+### Apply mean function
 stat_mean <- c()
 for(k in 1:length(store)) {
   stat_mean[k] <- mean(store[[k]], na.rm=T)
 }
+
+### Combine mean data together
 d_mean <- data.frame(year=y_level, mean=stat_mean)
 
 ### Using plyr
