@@ -9,16 +9,18 @@ import pandas as pd
 
 # target URL to scrap
 url = "https://www.goibibo.com/hotels/hotels-in-shimla-ct/"
+
 # headers
 headers = {
 'User-Agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
-    }
+}
 # send request to download the data
 response = requests.request("GET", url, headers=headers)
+
 # parse the downloaded data
 data = BeautifulSoup(response.text, 'html.parser')
 
-# print(data)
+print(data)
 
 # find all the sections with specifiedd class name
 cards_data = data.find_all('div', attrs={'class', 'width100 fl htlListSeo hotel-tile-srp-container hotel-tile-srp-container-template new-htl-design-tile-main-block'})
@@ -60,9 +62,9 @@ for card in cards_data:
 
     # append the scraped data to the list
     scraped_data.append(card_details)
-
-# create a data frame from the list of dictionaries
+#
+# # create a data frame from the list of dictionaries
 dataFrame = pd.DataFrame.from_dict(scraped_data)
-
-# save the scraped data as CSV file
+#
+# # save the scraped data as CSV file
 dataFrame.to_csv('hotels_data.csv', index=False)
