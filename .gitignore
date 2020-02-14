@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
  venv
+
+twitter_credentials.json
